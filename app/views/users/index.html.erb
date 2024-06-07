@@ -1,0 +1,21 @@
+<h1>Users List</h1>
+
+<%= link_to "New User", new_user_path %><br>
+
+<table border="1" width="50%">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Option</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to "Show", user %>&nbsp;&nbsp;<%= link_to "Edit", edit_user_path(user) %>&nbsp;&nbsp;<%= link_to "Delete", user_path(user), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %></td>
+    </tr>
+    <% end %>
+</table>
